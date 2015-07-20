@@ -1,0 +1,99 @@
+img {
+	height: 100px;
+	width: 100px;
+}
+
+html {
+	background-image: url(http://christianmascheroni.com/wp-content/uploads/2014/11/TABLE-GAMES-Blackjack-Pro-3-box1.jpg);
+	background-repeat: no-repeat;
+
+}
+
+
+h1 {
+	color: white;
+	font-style: fantasy;
+	position: absolute;
+}
+@keyframes change {
+    from {background-color: green;}
+    to {background-color: yellow;}
+}
+#bet {
+	position: absolute;
+	margin-left: 650px;
+	margin-top: 300px;
+	height: 60px;
+	width: 150px;
+	font-size: 20px;
+	background-color: #E5E4D7;
+	border: 2px groove #FFCF79;
+	border-radius: 40px;
+	font-family: cursive;
+	animation-name: change;
+	animation-duration: 10s;
+}
+
+#Submit {
+	position: absolute;
+	margin-top: 305px;
+	margin-left: 805px;
+	color: lemonChiffon;
+	border: 2px groove #FFCF79;
+}
+
+#Hit{
+	position: absolute;
+	margin-top: 400px;
+	margin-left: 450px;
+	color: lemonChiffon;
+	border: 2px groove #FFCF79;
+}
+
+#Stay {
+     position: absolute;
+     margin-top: 460px;
+     margin-left: 450px;
+     color: lemonChiffon;
+     border: 2px groove #FFCF79;
+}
+
+#winnings {
+	margin-top: 250px;
+	margin-left: 180px;
+    font-family: cursive;
+    color: lemonChiffon;
+}
+#Money {
+	position: absolute;
+	margin-top: 330px;
+	margin-left: 210px;
+}
+
+
+#bet-number {
+  position: absolute;
+  text-align: center;
+  margin-top: 330px;
+  margin-left: 1160px;
+  
+	
+
+}
+
+.dealer {
+	position: relative;
+	text-align: center;
+    margin-top: 100px;
+
+
+}
+
+.user {
+	text-align: center;
+	margin-top: 300px;
+	margin-left: 90px;
+
+}
+
+
