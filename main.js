@@ -1,6 +1,6 @@
-$( document ).ready(function() {
-    $('#Hit').click();
-});
+// $( document ).ready(function() {
+//     $('#Hit').click();
+// });
 console.log("I am linked");
 
 var cards = ['PNG-cards-1.3/ace_of_clubs.png',
@@ -68,6 +68,7 @@ var $arrayOfDeck = [];
 $('#Submit').click(function(){   
 var $placeBet = $input.val();
 $('#bet-number').text($placeBet);
+// $('#bet').val("");
 });
 
 
@@ -125,9 +126,9 @@ var $userWinnings = $('#Money').text();
 var $betNumber = $('#bet').val();
 
 
+var addCards = function addCards() { 
 var j = 2;
 var y = 4;
-var addCards = function addCards() { 
   
   move();
 
@@ -158,11 +159,13 @@ var addCards = function addCards() {
  	   	alert('You lost!');
  	   	$('#Money').text(parseInt($('#Money').text()) - parseInt($('#bet').val()));
 	    $('#Hit').off('click');
+	    $('#Stay').off('click');
 
  	   } else if ($userTotal === 21) {
  	   	alert('You got a perfect score!');
  	   	$('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
         $('#Hit').off('click');
+        $('#Stay').off('click');
  	   }
 
  }  else if ($userHand.length >= 2 &&  $userTotal < 21){
@@ -180,22 +183,26 @@ var addCards = function addCards() {
  	   	alert('You lost!');
  	   	$('#Money').text(parseInt($('#Money').text()) - parseInt($('#bet').val()));
 	    $('#Hit').off('click');
+	    $('#Stay').off('click');
  	   } else if ($userTotal === 21) {
  	   	alert('You got a perfect score!');
  	   	$('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
         $('#Hit').off('click');
+        $('#Stay').off('click');
  	   }
 
   } else if ($userTotal === 21) {
      alert('You got a perfect score!');
-     $$('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
+     $('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
      $('#Hit').off('click');
+     $('#Stay').off('click');
     
 } else if ($userHand > 21) {
 
 	alert('You lost!');
 	$('#Money').text(parseInt($('#Money').text()) - parseInt($('#bet').val()));
 	$('#Hit').off('click');
+	$('#Stay').off('click');
     }
 }
 
@@ -203,12 +210,11 @@ $('#Hit').click(addCards)
 
 var $dealerTotal;
 
+
+ var stand = function stand() {   
 var i = 2;
 var x = 5;
-
-$('#Stay').click(function(){
-    
-	if ($dealerHand.length === 2 && ($dealerHand[0].values + $dealerHand[1].values) < 17) {
+	if ($dealerHand.length === 2 && ($dealerHand[0].values + $dealerHand[1].values) <= 17) {
         $dealerHand.push($arrayOfDeck[x]);
  	    $('<img>').attr('src', $dealerHand[i].cards)
  	         .appendTo('.dealer');
@@ -223,29 +229,35 @@ $('#Stay').click(function(){
     		alert('You won!');
     		$('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
     		$('#Stay').off('click');
+    		$('#Hit').off('click');
     	} else if ($dealerTotal > $userTotal) {
     		alert('Dealer won!');
     		$('#Money').text($('#Money').text() - $('#bet').val());
     		$('#Stay').off('click');
+    		$('#Hit').off('click');
     	} else if ($userTotal === $dealerTotal) {
     		alert('You are tied!');
     		$('#Stay').off('click');
+    		$('#Hit').off('click');
     	} else if ($dealerTotal === 21) {
     		alert('Dealer got a perfect score!');
     		$('#Money').text($('#Money').text() - $('#bet').val());
     		$('#Stay').off('click');
+    		$('#Hit').off('click');
     	}
     } else if ($dealerHand.length === 2 && ($dealerHand[0].values + $dealerHand[1].values) === 21) {
     	alert('Dealer got a perfect score!');
     	$('#Money').text($('#Money').text() - $('#bet').val());
     	$('#Stay').off('click');
+    	$('#Hit').off('click');
     } else if ($dealerHand.length === 2 && ($dealerHand[0].values + $dealerHand[1].values) > 21) {
     	alert('You won!');
     	$('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
     	$('#Stay').off('click');
+    	$('#Hit').off('click');
     }
 
- 	while ($dealerHand.length > 2 && $dealerTotal <= 17) {
+ 	while ($dealerHand.length > 2 && $dealerTotal < 17) {
       move();
       $dealerHand.push($arrayOfDeck[x]);
 
@@ -259,26 +271,82 @@ $('#Stay').click(function(){
       	alert('You won!');
       	$('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
       	$('#Stay').off('click');
-      } else if ($dealerHand.length > 2 && 21 > $dealerTotal > $userTotal) {
+      	$('#Hit').off('click');
+      } else if ($dealerHand.length > 2 && 21 > $dealerTotal && $dealerTotal > $userTotal) {
       	alert('Dealer won!');
       	$('#Money').text($('#Money').text() - $('#bet').val());
       	$('#Stay').off('click');
+      	$('#Hit').off('click');
       } else if ($dealerHand.length > 2 && $dealerTotal === $userTotal) {
       	alert('It\'s a tie!');
       	$('#Stay').off('click');
+      	$('#Hit').off('click');
       } else if ($dealerTotal === 21) {
       	alert('The dealer got a perfect score!');
       	$('#Money').text($('#Money').text() - $('#bet').val());
       	$('#Stay').off('click');
+      	$('#Hit').off('click');
       } else if ($dealerTotal > 21) {
  	  	alert('You won!');
  	  	$('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet').val()));
  	  	$('#Stay').off('click');
+ 	  	$('#Hit').off('click');
  	  }
-    
-}) 
+ }; 
+$('#Stay').click(stand)
  	
+$('#newGame').click(function(){
+	$('.dealer').remove();
+	$('.user').remove();
+	$dealerHand = [];
+	$userHand = [];
+	$userTotal = 0;
+	$dealerTotal = 0;
 
+
+	$('#Hit').on('click', addCards);
+    $('#Stay').on('click', stand);
+
+})
+
+$('#restart').click(function(){
+	location.reload();
+})
+
+$('#double').click(function(){
+	$('#bet-number').text($('#bet').val() * 2);
+	move();
+	$userHand.push($arrayOfDeck[2]);
+
+ 	$('<img>').attr('src', $userHand[2].cards)
+ 	        .appendTo('.user');
+
+ 	$userTotal = $userHand[0].values + $userHand[1].values + $userHand[2].values;
+ 	        
+ 	 
+ 	$dealerTotal = $dealerHand[0].values + $dealerHand[1].values;
+
+ 	 if ($userTotal > 21) {
+ 	 	alert('You lose!');
+        $('#Money').text(parseInt($('#Money').text()) - parseInt($('#bet-number').text()));
+        $dealerHand.pop();
+        $userHand.pop();
+ 	 } else if ($userTotal > $dealerTotal) {
+ 	 	alert('You won!');
+        $('#Money').text(parseInt($('#Money').text()) + parseInt($('#bet-number').text()));
+        $dealerHand.pop();
+        $userHand.pop(); 	 
+    } else if ($dealerTotal > $userTotal && $dealerTotal < 21) {
+ 	 	alert('Dealer won!')
+ 	 	$('#Money').text(parseInt($('#Money').text()) - parseInt($('#bet-number').text()));
+ 	 	$dealerHand.pop();
+        $userHand.pop();
+ 	 } else if ($userTotal === $dealerTotal) {
+ 	 	alert('It\'s a tie!')
+ 	 	$dealerHand.pop();
+        $userHand.pop();
+ 	 }
+})
 
 
 

@@ -15,6 +15,7 @@ h1 {
 	font-style: fantasy;
 	position: absolute;
 }
+
 @keyframes change {
     from {background-color: green;}
     to {background-color: yellow;}
@@ -33,6 +34,20 @@ h1 {
 	animation-name: change;
 	animation-duration: 10s;
 }
+#Bets {
+	font-family: cursive;
+    color: lemonChiffon;
+    margin-left: 1140px;
+    margin-top: 330px;
+}
+
+#newGame {
+	position: absolute;
+	margin-left: 650px;
+	margin-top: 435px;
+	color: lemonChiffon;
+	border: 2px groove #FFCF79;
+}
 
 #Submit {
 	position: absolute;
@@ -42,12 +57,29 @@ h1 {
 	border: 2px groove #FFCF79;
 }
 
+#double {
+	color: lemonChiffon;
+	border: 2px groove #FFCF79;
+    margin-left: 390px;
+    margin-top: 510px;
+	position: absolute; 
+}
+
 #Hit{
 	position: absolute;
 	margin-top: 400px;
-	margin-left: 450px;
+	margin-left: 460px;
 	color: lemonChiffon;
 	border: 2px groove #FFCF79;
+}
+
+#restart {
+	color: lemonChiffon;
+	border: 2px groove #FFCF79;
+	position: absolute;
+	margin-top: 380px;
+    margin-left: 650px;
+
 }
 
 #Stay {
@@ -59,40 +91,47 @@ h1 {
 }
 
 #winnings {
-	margin-top: 250px;
+	position: absolute;
+	margin-top: 330px;
 	margin-left: 180px;
     font-family: cursive;
     color: lemonChiffon;
+    z-index: 0;
 }
 #Money {
 	position: absolute;
-	margin-top: 330px;
+	margin-top: 430px;
 	margin-left: 210px;
+	color: lemonChiffon;
+	z-index: 0;
 }
 
 
 #bet-number {
   position: absolute;
   text-align: center;
-  margin-top: 330px;
+  margin-top: 420px;
   margin-left: 1160px;
-  
+  color: lemonChiffon;
 	
 
 }
 
 .dealer {
-	position: relative;
+	position: absolute;
 	text-align: center;
+	z-index: 1;
     margin-top: 100px;
+    margin-left: 660px;
 
 
 }
 
 .user {
+	position: absolute;
 	text-align: center;
-	margin-top: 300px;
-	margin-left: 90px;
+	margin-top: 495px;
+	margin-left: 660px;
 
 }
 
